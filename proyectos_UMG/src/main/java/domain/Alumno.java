@@ -13,7 +13,10 @@ public class Alumno {
     int id_Alumno;
     String nombreAlumno;
     String direAlumno;
-
+    String telAlumno;
+    String emailAlumno;
+    String estatAlumno;
+    
     public Alumno() {
     }
 //------------------------------------------------------------------
@@ -27,33 +30,63 @@ public class Alumno {
     }
 //-------------------------------------------------------------------
    //getter y setters
-    public int getId_vendedor() {
+    public int getId_alumno() {
         return id_Alumno;
     }
 
-    public void setId_vendedor(int id_vendedor) {
-        this.id_Alumno = id_vendedor;
+    public void setId_alumno(int id_alumno) {
+        this.id_Alumno = id_alumno;
     }
-
-    public String getNombreVendedor() {
+//----------------------------------------------------------------------
+    public String getNombreAlumno() {
         return nombreAlumno;
     }
 
-    public void setNombreVendedor(String nombreVendedor) {
-        this.nombreAlumno = nombreVendedor;
+    public void setNombreAlumno(String nombreAlumno) {
+        this.nombreAlumno = nombreAlumno;
     }
-
-    public String getDireVendedor() {
+//----------------------------------------------------------------------
+    public String getDireAlumno() {
         return direAlumno;
     }
 
-    public void setDireVendedor(String direVendedor) {
-        this.direAlumno = direVendedor;
+    public void setDireVendedor(String direAlumno) {
+        this.direAlumno = direAlumno;
     }
+//----------------------------------------------------------------------
+      public String getTelAlumno() {
+        return telAlumno;
+    }
+
+    public void setTelAlumno(String telAlumno) {
+        this.telAlumno = telAlumno;
+    }
+//----------------------------------------------------------------------
+      public String getEmailAlumno() {
+        return emailAlumno;
+    }
+
+    public void setEmailAlumno(String emailAlumno) {
+        this.emailAlumno = emailAlumno;
+    }
+//----------------------------------------------------------------------
+     public String getEstatAlumno() {
+        return estatAlumno;
+    }
+
+    public void setEstatAlumno(String estatAlumno) {
+        this.estatAlumno = estatAlumno;
+    }
+//----------------------------------------------------------------------
 //Return en pantalla  de todos los elementos
     @Override
     public String toString() {
-        return "Vendedor{" + "id_vendedor=" + id_Alumno + ", nombreVendedor=" + nombreAlumno + ", direVendedor=" + direAlumno + '}';
+        return "Alumno{" + "id_alumno=" + id_Alumno + 
+                ", nombreAlumno=" + nombreAlumno + 
+                ", direAlumno=" + direAlumno +
+                ",telAlumno" + telAlumno+
+                ",emailAlumno"+emailAlumno+
+                "estatAlumno"+estatAlumno+'}';
     }
     
 }

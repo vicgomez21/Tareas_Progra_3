@@ -25,6 +25,8 @@ public class AlumnoDAO {
     private static final String SQL_DELETE = "DELETE FROM vendedor WHERE idvendedor=?";
     private static final String SQL_QUERY = "SELECT id_vendedor, nombrevendedor, direvendedor FROM vendedor WHERE id_vendedor = ?";
 
+    //-------------------------------------------------------------------------------
+    //SELECT
     public List<Vendedor> select() {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -59,7 +61,8 @@ public class AlumnoDAO {
 
         return vendedores;
     }
-
+//-------------------------------------------------------------------------------
+    //INSERT
     public int insert(Vendedor vendedor) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -83,7 +86,8 @@ public class AlumnoDAO {
 
         return rows;
     }
-
+//-------------------------------------------------------------------------------
+    //UPDATE
     public int update(Vendedor vendedor) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -109,7 +113,8 @@ public class AlumnoDAO {
 
         return rows;
     }
-
+//-------------------------------------------------------------------------------
+    //DELETE
     public int delete(Vendedor vendedor) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -132,6 +137,8 @@ public class AlumnoDAO {
         return rows;
     }
 
+    //-------------------------------------------------------------------------------
+    //QUERY
 //    public List<Persona> query(Persona vendedor) { // Si se utiliza un ArrayList
     public Vendedor query(Vendedor vendedor) {    
         Connection conn = null;
