@@ -10,23 +10,27 @@ package domain;
  * @author visitante
  */
 public class Alumno {
+
+   
     int id_Alumno;
     String nombreAlumno;
     String direAlumno;
     String telAlumno;
     String emailAlumno;
     String estatAlumno;
-    
-    public Alumno() {
-    }
-//------------------------------------------------------------------
-    public Alumno(int id_Alumno) {
-        this.id_Alumno = id_Alumno;
-    }
 
-    public Alumno(String nombreAlumno, String direAlumno) {
+    public Alumno(int id_Alumno, String nombreAlumno, String direAlumno,
+            String telAlumno, String emailAlumno, String estatAlumno) 
+    {
+        this.id_Alumno = id_Alumno;
         this.nombreAlumno = nombreAlumno;
         this.direAlumno = direAlumno;
+        this.telAlumno = telAlumno;
+        this.emailAlumno = emailAlumno;
+        this.estatAlumno = estatAlumno;
+    }
+    
+    public Alumno() {
     }
 //-------------------------------------------------------------------
    //getter y setters

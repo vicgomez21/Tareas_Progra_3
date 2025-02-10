@@ -5,7 +5,7 @@
  */
 package datos;
 
-import domain.Vendedor;
+import domain.Alumno;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,29 +19,30 @@ import java.util.List;
  */
 public class AlumnoDAO {
 
-    private static final String SQL_SELECT = "SELECT id_vendedor, nombrevendedor, direvendedor FROM vendedor";
-    private static final String SQL_INSERT = "INSERT INTO vendedor(nombrevendedor, direvendedor) VALUES(?, ?)";
-    private static final String SQL_UPDATE = "UPDATE vendedor SET nombrevendedor=?, direvendedor=? WHERE idvendedor = ?";
-    private static final String SQL_DELETE = "DELETE FROM vendedor WHERE idvendedor=?";
-    private static final String SQL_QUERY = "SELECT id_vendedor, nombrevendedor, direvendedor FROM vendedor WHERE id_vendedor = ?";
-
+   private static final String SQL_SELECT = "SELECT idAlumno, nombreAlumno, direccionAlumno, telefonoAlumno, emailAlumno, estatusAlumno FROM alumnos";
+    private static final String SQL_INSERT = "INSERT INTO alumnos(idAlumno, nombreAlumno, direccionAlumno, telefonoAlumno, emailAlumno, estatusAlumno) VALUES(?, , , , , ?)";
+    private static final String SQL_UPDATE = "UPDATE alumnos SET idAlumno=?, nombreAlumno=?, direccionAlumno=?, telefonoAlumno=?, emailAlumno=?, estatusAlumno=? WHERE carnetAlumno = ?";
+    private static final String SQL_DELETE = "DELETE FROM alumos WHERE carnetAlumno=?";
+    private static final String SQL_QUERY = "SELECT carnetAlumno, nombreAlumno, direccionAlumno, telefonoAlumno, emailAlumno, estatusAlumno FROM alumnos WHERE carnetAlumno = ?";  
     //-------------------------------------------------------------------------------
     //SELECT
-    public List<Vendedor> select() {
+    public List<Alumno> select() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Vendedor vendedor = null;
-        List<Vendedor> vendedores = new ArrayList<Vendedor>();
-
+        //inicializacion del objeto
+        Alumno alumno = null;
+        List<Alumno> vendedores = new ArrayList<Alumno>();
+//condicional sobre algun error try y catch
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id_vendedor = rs.getInt("id_vendedor");
-                String nombre = rs.getString("nombrevendedor");
-                String direccion = rs.getString("direvendedor");
+                int id_alumno = rs.getInt("id_alumno");
+                String nombre = rs.getString("nombrealumno");
+                String direccion = rs.getString("direalumno");
+                String telefono  = rs.getString("telefonoalumno");
                 
                 vendedor = new Vendedor();
                 vendedor.setId_vendedor(id_vendedor);
