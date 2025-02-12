@@ -54,7 +54,7 @@ public class Alumno {
         return direAlumno;
     }
 
-    public void setDireVendedor(String direAlumno) {
+    public void setDireAlumno(String direAlumno) {
         this.direAlumno = direAlumno;
     }
 //----------------------------------------------------------------------

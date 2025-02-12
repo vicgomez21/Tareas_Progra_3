@@ -1,5 +1,6 @@
 domain\Empleado.class
 vista\MantenimientoVendedores$5.class
+datos\EstudianteDAO.class
 vista\Login$2.class
 vista\MdiGeneral$1.class
 vista\MdiGeneral.class

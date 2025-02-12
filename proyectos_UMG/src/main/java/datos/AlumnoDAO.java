@@ -19,11 +19,11 @@ import java.util.List;
  */
 public class AlumnoDAO {
 
-   private static final String SQL_SELECT = "SELECT idAlumno, nombreAlumno, direccionAlumno, telefonoAlumno, emailAlumno, estatusAlumno FROM alumnos";
-    private static final String SQL_INSERT = "INSERT INTO alumnos(idAlumno, nombreAlumno, direccionAlumno, telefonoAlumno, emailAlumno, estatusAlumno) VALUES(?, , , , , ?)";
-    private static final String SQL_UPDATE = "UPDATE alumnos SET idAlumno=?, nombreAlumno=?, direccionAlumno=?, telefonoAlumno=?, emailAlumno=?, estatusAlumno=? WHERE carnetAlumno = ?";
-    private static final String SQL_DELETE = "DELETE FROM alumos WHERE carnetAlumno=?";
-    private static final String SQL_QUERY = "SELECT carnetAlumno, nombreAlumno, direccionAlumno, telefonoAlumno, emailAlumno, estatusAlumno FROM alumnos WHERE carnetAlumno = ?";  
+   private static final String SQL_SELECT = "SELECT id_alumno, nombre_Alumno, direccion_Alumno, telefono_Alumno, email_Alumno, estatus_Alumno FROM alumnos";
+    private static final String SQL_INSERT = "INSERT INTO alumnos(id_alumno, nombre_Alumno, direccion_Alumno, telefono_Alumno, email_Alumno, estatus_Alumno ) VALUES(?, , , , , ?)";
+    private static final String SQL_UPDATE = "UPDATE alumnos SET id_alumno=?, nombre_Alumno=?, direccion_Alumno=?, telefono_Alumno=?, email_Alumno=?, estatus_Alumno=? WHERE carnetAlumno = ?";
+    private static final String SQL_DELETE = "DELETE FROM alumos WHERE estatus_Alumno=?";
+    private static final String SQL_QUERY = "SELECT id_alumno, nombre_Alumno, direccion_Alumno, telefono_Alumno, email_Alumno, estatus_Alumno  FROM alumnos WHERE carnetAlumno = ?";  
     //-------------------------------------------------------------------------------
     //SELECT
     public List<Alumno> select() {
@@ -32,7 +32,7 @@ public class AlumnoDAO {
         ResultSet rs = null;
         //inicializacion del objeto
         Alumno alumno = null;
-        List<Alumno> vendedores = new ArrayList<Alumno>();
+        List<Alumno> alumnos = new ArrayList<Alumno>();
 //condicional sobre algun error try y catch
         try {
             conn = Conexion.getConnection();
@@ -40,16 +40,20 @@ public class AlumnoDAO {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id_alumno = rs.getInt("id_alumno");
-                String nombre = rs.getString("nombrealumno");
-                String direccion = rs.getString("direalumno");
-                String telefono  = rs.getString("telefonoalumno");
+                String nombre = rs.getString("nombre_Alumno");
+                String direccion = rs.getString("direccion_Alumno");
+                String telefono  = rs.getString("telefono_Alumno");
+                String email = rs.getString("email_Alumno");
+                String estatus = rs.getString("estatus_Alumno");
                 
-                vendedor = new Vendedor();
-                vendedor.setId_vendedor(id_vendedor);
-                vendedor.setNombreVendedor(nombre);
-                vendedor.setDireVendedor(direccion);
                 
-                vendedores.add(vendedor);
+                alumno = new Alumno();
+                alumno.setId_alumno(id_alumno);
+                alumno.setNombreAlumno(nombre);
+                alumno.setDireAlumno(direccion);
+                alumno.setEmailAlumno(email);
+                alumno.setEstatAlumno(estatus);
+                alumnos.add(alumno);
             }
 
         } catch (SQLException ex) {
@@ -60,19 +64,22 @@ public class AlumnoDAO {
             Conexion.close(conn);
         }
 
-        return vendedores;
+        return alumnos;
     }
 //-------------------------------------------------------------------------------
     //INSERT
-    public int insert(Vendedor vendedor) {
+    public int insert(Alumno alumno) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, vendedor.getNombreVendedor());
-            stmt.setString(2, vendedor.getDireVendedor());
+            stmt.setString(1, alumno.getNombreAlumno());
+            stmt.setString(2, alumno.getDireAlumno());
+            stmt.setString(3, alumno.getTelAlumno());
+            stmt.setString(4, alumno.getEmailAlumno());
+            stmt.setString(6, alumno.getEstatAlumno());
 
 
             System.out.println("ejecutando query:" + SQL_INSERT);
@@ -89,7 +96,7 @@ public class AlumnoDAO {
     }
 //-------------------------------------------------------------------------------
     //UPDATE
-    public int update(Vendedor vendedor) {
+    public int update(Alumno alumno) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -98,9 +105,9 @@ public class AlumnoDAO {
             conn = Conexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, vendedor.getNombreVendedor());
-            stmt.setString(2, vendedor.getDireVendedor());
-            stmt.setInt(3, vendedor.getId_vendedor());
+            stmt.setString(1, alumno.getNombreAlumno());
+            stmt.setString(2, alumno.getDireAlumno());
+            stmt.setInt(3, alumno.getId_alumno());
 
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -116,7 +123,7 @@ public class AlumnoDAO {
     }
 //-------------------------------------------------------------------------------
     //DELETE
-    public int delete(Vendedor vendedor) {
+    public int delete(Alumno alumnos) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -125,7 +132,7 @@ public class AlumnoDAO {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_DELETE);
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setInt(1, vendedor.getId_vendedor());
+            stmt.setInt(1, alumnos.getId_alumno());
             rows = stmt.executeUpdate();
             System.out.println("Registros eliminados:" + rows);
         } catch (SQLException ex) {
@@ -141,28 +148,28 @@ public class AlumnoDAO {
     //-------------------------------------------------------------------------------
     //QUERY
 //    public List<Persona> query(Persona vendedor) { // Si se utiliza un ArrayList
-    public Vendedor query(Vendedor vendedor) {    
+    public Alumno query(Alumno alumno) {    
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List<Vendedor> vendedores = new ArrayList<Vendedor>();
+        List<Alumno> alumnos = new ArrayList<Alumno>();
         int rows = 0;
 
         try {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_QUERY);
             stmt = conn.prepareStatement(SQL_QUERY);
-            stmt.setInt(1, vendedor.getId_vendedor());
+            stmt.setInt(1, alumno.getId_alumno());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id_vendedor = rs.getInt("id_vendedor");
-                String nombre = rs.getString("nombrevendedor");
-                String direccion = rs.getString("direvendedor");
+                int id_alumno = rs.getInt("id_alumno");
+                String nombre = rs.getString("nombre_Alumno");
+                String direccion = rs.getString("direccion_Alumno");
                 
-                vendedor = new Vendedor();
-                vendedor.setId_vendedor(id_vendedor);
-                vendedor.setNombreVendedor(nombre);
-                vendedor.setDireVendedor(direccion);
+                alumno = new Alumno();
+                alumno.setId_alumno(id_alumno);
+                alumno.setNombreAlumno(nombre);
+                alumno.setDireAlumno(direccion);
                 
                 //vendedores.add(vendedor); // Si se utiliza un ArrayList
             }
@@ -176,7 +183,7 @@ public class AlumnoDAO {
         }
 
         //return vendedores;  // Si se utiliza un ArrayList
-        return vendedor;
+        return alumno;
     }
         
 }
