@@ -3,7 +3,7 @@
 import java.sql.*;
 
 public class Conexion {
-    private static final String JDBC_URL = "jdbc:mysql://localhost/didactica?useSSL=false&serverTimezone=UTC";
+    private static final String JDBC_URL = "jdbc:mysql://localhost/siu_umg?useSSL=false&serverTimezone=UTC";
     //USUARIO PARA LA CONEXION
     private static final String JDBC_USER = "GomezV";
     private static final String JDBC_PASS = "2110";

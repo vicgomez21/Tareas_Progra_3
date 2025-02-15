@@ -12,36 +12,22 @@ package domain;
 public class Alumno {
 
    
-    int id_Alumno;
-    String nombreAlumno;
-    String direAlumno;
-    String telAlumno;
-    String emailAlumno;
-    String estatAlumno;
+   private int carnetAlumno;
+   private  String nombreAlumno;
+   private  String direAlumno;
+   private  String telefonoAlumno;
+   private  String emailAlumno;
+   private  String estatusAlumno;
 
-    public Alumno(int id_Alumno, String nombreAlumno, String direAlumno,
-            String telAlumno, String emailAlumno, String estatAlumno) 
-    {
-        this.id_Alumno = id_Alumno;
-        this.nombreAlumno = nombreAlumno;
-        this.direAlumno = direAlumno;
-        this.telAlumno = telAlumno;
-        this.emailAlumno = emailAlumno;
-        this.estatAlumno = estatAlumno;
-    }
-    
-    public Alumno() {
-    }
-//-------------------------------------------------------------------
-   //getter y setters
-    public int getId_alumno() {
-        return id_Alumno;
+//METODOS PARA OBTENER Y COLOCAR INFORMACION DENTRO DE LOS ATRIBUTOS PRIVADOS
+    public int getCarnetAlumno() {
+        return carnetAlumno;
     }
 
-    public void setId_alumno(int id_alumno) {
-        this.id_Alumno = id_alumno;
+    public void setCarnetAlumno(int carnetAlumno) {
+        this.carnetAlumno = carnetAlumno;
     }
-//----------------------------------------------------------------------
+
     public String getNombreAlumno() {
         return nombreAlumno;
     }
@@ -49,7 +35,7 @@ public class Alumno {
     public void setNombreAlumno(String nombreAlumno) {
         this.nombreAlumno = nombreAlumno;
     }
-//----------------------------------------------------------------------
+
     public String getDireAlumno() {
         return direAlumno;
     }
@@ -57,40 +43,59 @@ public class Alumno {
     public void setDireAlumno(String direAlumno) {
         this.direAlumno = direAlumno;
     }
-//----------------------------------------------------------------------
-      public String getTelAlumno() {
-        return telAlumno;
+
+    public String getTelefonoAlumno() {
+        return telefonoAlumno;
     }
 
-    public void setTelAlumno(String telAlumno) {
-        this.telAlumno = telAlumno;
+    public void setTelefonoAlumno(String telefonoAlumno) {
+        this.telefonoAlumno = telefonoAlumno;
     }
-//----------------------------------------------------------------------
-      public String getEmailAlumno() {
+
+    public String getEmailAlumno() {
         return emailAlumno;
     }
 
     public void setEmailAlumno(String emailAlumno) {
         this.emailAlumno = emailAlumno;
     }
-//----------------------------------------------------------------------
-     public String getEstatAlumno() {
-        return estatAlumno;
+
+    public String getEstatusAlumno() {
+        return estatusAlumno;
     }
 
-    public void setEstatAlumno(String estatAlumno) {
-        this.estatAlumno = estatAlumno;
+    public void setEstatusAlumno(String estatusAlumno) {
+        this.estatusAlumno = estatusAlumno;
     }
-//----------------------------------------------------------------------
-//Return en pantalla  de todos los elementos
-    @Override
-    public String toString() {
-        return "Alumno{" + "id_alumno=" + id_Alumno + 
-                ", nombreAlumno=" + nombreAlumno + 
-                ", direAlumno=" + direAlumno +
-                ",telAlumno" + telAlumno+
-                ",emailAlumno"+emailAlumno+
-                "estatAlumno"+estatAlumno+'}';
+//SOBRE CARGA DE CONSTRUCTORES ( GENERAMOS OBJETOS CON DISTINTOS ATRIBUTOS)
+    public Alumno() {
+    
+    }
+
+    public Alumno(int carnetAlumno, String nombreAlumno, 
+            String direAlumno, String telefonoAlumno, 
+            String emailAlumno,String estatusAlumno) {
+        //this son los atributos y la variable en memoria
+        this.carnetAlumno = carnetAlumno;
+        this.nombreAlumno = nombreAlumno;
+        this.direAlumno = direAlumno;
+        this.telefonoAlumno = telefonoAlumno;
+        this.emailAlumno = emailAlumno;
+        this.estatusAlumno = estatusAlumno;
     }
     
+    
+    
+     @Override
+    public String toString() {
+        return "Alumno{" + "carnetAlumno=" + carnetAlumno + 
+                ", nombreAlumno=" + nombreAlumno + 
+                ", direAlumno=" + direAlumno + 
+                ", telefonoAlumno=" + telefonoAlumno + 
+                ", emailAlumno=" + emailAlumno +
+                ", estatusAlumno=" + estatusAlumno + '}';
+    }
 }
+
+   
+
