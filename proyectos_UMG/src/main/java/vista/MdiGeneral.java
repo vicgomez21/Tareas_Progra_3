@@ -39,7 +39,7 @@ public class MdiGeneral extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        mantenimientousus = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -67,13 +67,13 @@ public class MdiGeneral extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem3.setText("Mantenimiento Alumnos");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        mantenimientousus.setText("Mantenimiento Alumnos");
+        mantenimientousus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                mantenimientoususActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem3);
+        jMenu3.add(mantenimientousus);
 
         jMenu1.add(jMenu3);
 
@@ -100,14 +100,14 @@ public class MdiGeneral extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenu3ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void mantenimientoususActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoususActionPerformed
         // TODO add your handling code here:
         MantenimientoAlumnos ventana = new MantenimientoAlumnos();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_mantenimientoususActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,6 +151,6 @@ public class MdiGeneral extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem mantenimientousus;
     // End of variables declaration//GEN-END:variables
 }
