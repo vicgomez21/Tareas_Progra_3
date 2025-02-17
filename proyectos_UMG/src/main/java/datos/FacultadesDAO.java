@@ -5,7 +5,7 @@
  */
 package datos;
 
-import domain.Alumno;
+import domain.Facultades;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,23 +17,23 @@ import java.util.List;
  *
  * @author visitante
  */
-public class AlumnoDAO {
+public class FacultadesDAO {
 // el ? ño utiliza java para poder trasladarle informacion a una base de datos desde java
-   private static final String SQL_SELECT = "SELECT carnet_alumno, nombre_alumno, direccion_alumno, telefono_alumno, email_alumno, estatus_alumno FROM alumnos";
-    private static final String SQL_INSERT = "INSERT INTO alumnos(nombre_alumno, direccion_alumno, telefono_alumno, email_alumno, estatus_alumno ) VALUES(?, ?,  ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE alumnos SET nombre_alumno=?, direccion_alumno=?, telefono_alumno=?, email_alumno=?, estatus_alumno=? WHERE carnet_alumno = ?";
-    private static final String SQL_DELETE = "DELETE FROM alumnos WHERE carnet_alumno=?";
-    private static final String SQL_QUERY = "SELECT carnet_alumno, nombre_alumno, direccion_alumno, telefono_alumno, email_alumno, estatus_alumno  FROM alumnos WHERE carnet_alumno = ?";  
+   private static final String SQL_SELECT = "SELECT codigo_facultad, nombre_facultad,estatus_facultad FROM facultades";
+    private static final String SQL_INSERT = "INSERT INTO facultades( nombre_facultad,estatus_facultad ) VALUES(?, ?)";
+    private static final String SQL_UPDATE = "UPDATE facultades SET nombre_facultad=?, estatus_facultad=?WHERE codigo_facultad = ?";
+    private static final String SQL_DELETE = "DELETE FROM facultades WHERE codigo_facultad=?";
+    private static final String SQL_QUERY = "SELECT codigo_facultad, nombre_facultad, estatus_facultad  FROM facultades WHERE codigo_facultad = ?";  
  //-------------------------------------------------------------------------------
     //SELECT
-    public List<Alumno> select() {
+    public List<Facultades> select() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         //inicializacion del objeto
-        Alumno alumno = null;
+        Facultades facultades = null;
        //trae todo los registros de la tabla y los coloca en la lista
-        List<Alumno> alumnos_list = new ArrayList<Alumno>();
+        List<Facultades> facultades_list = new ArrayList<Facultades>();
 //condicional sobre algun error try y catch
         try {
             conn = Conexion.getConnection();
@@ -42,22 +42,17 @@ public class AlumnoDAO {
     //llenamos   de registros nuestra lista       
             while (rs.next()) {
         //variables temporales para guardar los registros de la base de datos
-                int carnet_alumno = rs.getInt("carnet_alumno");
-                String nombre_alumno = rs.getString("nombre_alumno");
-                String direccion_alumno = rs.getString("direccion_alumno");
-                String telefono_alumno  = rs.getString("telefono_alumno");
-                String email_alumno = rs.getString("email_alumno");
-                String estatus_alumno = rs.getString("estatus_alumno");
+                int codigo_facultad = rs.getInt("codigo_facultad");
+                String nombre_facultad = rs.getString("nombre_facultad");
+                String estatus_facultad = rs.getString("estatus_facultad");
                 
         //llenamos los atributos de los objetos colocando los datos que hay en las temporales
-                alumno = new Alumno();
-                alumno.setCarnetAlumno(carnet_alumno);
-                alumno.setNombreAlumno(nombre_alumno);
-                alumno.setDireAlumno(direccion_alumno);
-                alumno.setEmailAlumno(email_alumno);
-                alumno.setEstatusAlumno(estatus_alumno);
+                facultades = new Facultades();
+                facultades.setCodigoFacultad(codigo_facultad);
+                facultades.setNombreFacultad(nombre_facultad);
+                facultades.setEstatusFacultadString(estatus_facultad);
                //añadimos a la lista todos los registros o el objeto 
-                alumnos_list.add(alumno);
+                facultades_list.add(facultades);
             }
 
         } catch (SQLException ex) {
@@ -68,11 +63,11 @@ public class AlumnoDAO {
             Conexion.close(conn);
         }
 //retornamos la lista de todos los alumnos que hay en la base de datos
-        return alumnos_list;
+        return facultades_list;
     }
 //-------------------------------------------------------------------------------
     //INSERT
-    public int insert(Alumno alumno) {
+    public int insert(Facultades facultades) {
    //abrimos la conexion
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -83,13 +78,9 @@ public class AlumnoDAO {
             stmt = conn.prepareStatement(SQL_INSERT);
            //Extraemos la informacion de java a la base de datos
            // llenamos los comodines declarados en SQL_insert
-           stmt.setString(1, alumno.getNombreAlumno());
-            stmt.setString(2, alumno.getDireAlumno());
-            stmt.setString(3, alumno.getTelefonoAlumno());
-            stmt.setString(4, alumno.getEmailAlumno());
-            stmt.setString(5, alumno.getEstatusAlumno());
-
-
+           stmt.setString(1, facultades.getNombreFacultad());
+            stmt.setString(2, facultades.getEstatusFacultadString());
+            
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
     //imprime en consola cuantas rows o filas fueron agregadas        
@@ -105,7 +96,7 @@ public class AlumnoDAO {
     }
 //-------------------------------------------------------------------------------
     //UPDATE
-    public int update(Alumno alumno) {
+    public int update(Facultades facultades) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -116,13 +107,10 @@ public class AlumnoDAO {
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
             //comodines de java , colocaremos datos de java dentro la base de datos
-            stmt.setString(1, alumno.getNombreAlumno());
-            stmt.setString(2, alumno.getDireAlumno());
-            stmt.setString(3, alumno.getTelefonoAlumno());
-            stmt.setString(4, alumno.getEmailAlumno());
-            stmt.setString(5, alumno.getEstatusAlumno());
+            stmt.setString(1, facultades.getNombreFacultad());
+            stmt.setString(2, facultades.getEstatusFacultadString());
            //comodin del where
-            stmt.setInt(6,alumno.getCarnetAlumno());
+            stmt.setInt(3,facultades.getCodigoFacultad());
 //ejecucion del stmt
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -138,7 +126,7 @@ public class AlumnoDAO {
     }
 //-------------------------------------------------------------------------------
     //DELETE
-    public int delete(Alumno alumno) {
+    public int delete(Facultades facultades) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -148,7 +136,7 @@ public class AlumnoDAO {
             System.out.println("Ejecutando query:" + SQL_DELETE);
             stmt = conn.prepareStatement(SQL_DELETE);
         //toma el comodin (numero de carnet) y ejecuta  el SQL_DELETE 
-            stmt.setInt(1, alumno.getCarnetAlumno());
+            stmt.setInt(1, facultades.getCodigoFacultad());
             rows = stmt.executeUpdate();
         //en consola dira cuantos registros seran eliminados
             System.out.println("Registros eliminados:" + rows);
@@ -168,12 +156,12 @@ public class AlumnoDAO {
     //-------------------------------------------------------------------------------
     //QUERY
 //TRAE LA INFORMACION ESPESIFICA DE UN REGISTRO USANDO UN SELEC Y WHERE
-    public Alumno query(Alumno alumno) {    
+    public Facultades query(Facultades facultades) {    
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
    //TODA LA INFORMACION LA AGREGAMOS A UNA LIST   
-        List<Alumno> alumnos_list = new ArrayList<Alumno>();
+        List<Facultades> facultades_list = new ArrayList<Facultades>();
         int rows = 0;
 
         try {
@@ -181,28 +169,23 @@ public class AlumnoDAO {
             System.out.println("Ejecutando query:" + SQL_QUERY);
             stmt = conn.prepareStatement(SQL_QUERY);
   //Traemos el comodin del Where para consultar la base de datos          
-            stmt.setInt(1, alumno.getCarnetAlumno());
+            stmt.setInt(1, facultades.getCodigoFacultad());
         //ejecuta la SQL_QUERY   
             rs = stmt.executeQuery();
             
             while (rs.next()) {
                 //variables temporales para guardar los registros de la base de datos
-                int carnet_alumno = rs.getInt("carnet_alumno");
-                String nombre_alumno = rs.getString("nombre_alumno");
-                String direccion_alumno = rs.getString("direccion_alumno");
-                String telefono_alumno  = rs.getString("telefono_alumno");
-                String email_alumno = rs.getString("email_alumno");
-                String estatus_alumno = rs.getString("estatus_alumno");
+                int codigo_facultad = rs.getInt("codigo_facultad");
+                String nombre_facultad = rs.getString("nombre_facultad");
+                String estatus_facultad = rs.getString("estatus_facultad");
                 
         //llenamos los atributos de los objetos colocando los datos que hay en las temporales
-                alumno = new Alumno();
-                alumno.setCarnetAlumno(carnet_alumno);
-                alumno.setNombreAlumno(nombre_alumno);
-                alumno.setDireAlumno(direccion_alumno);
-                alumno.setEmailAlumno(email_alumno);
-                alumno.setEstatusAlumno(estatus_alumno);
+                facultades = new Facultades();
+                facultades.setCodigoFacultad(codigo_facultad);
+                facultades.setNombreFacultad(nombre_facultad);
+                facultades.setEstatusFacultadString(estatus_facultad);
                //añadimos a la lista todos los registros o el objeto 
-                alumnos_list.add(alumno);
+                facultades_list.add(facultades);
             }
             //System.out.println("Registros buscado:" + vendedor);
         } catch (SQLException ex) {
@@ -214,7 +197,7 @@ public class AlumnoDAO {
         }
 
         //return el objeto unico;  // Si se utiliza un ArrayList
-        return alumno;
+        return facultades;
     }
         
 }
