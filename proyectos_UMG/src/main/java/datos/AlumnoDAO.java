@@ -54,6 +54,7 @@ public class AlumnoDAO {
                 alumno.setCarnetAlumno(carnet_alumno);
                 alumno.setNombreAlumno(nombre_alumno);
                 alumno.setDireAlumno(direccion_alumno);
+                alumno.setTelefonoAlumno(telefono_alumno);
                 alumno.setEmailAlumno(email_alumno);
                 alumno.setEstatusAlumno(estatus_alumno);
                //añadimos a la lista todos los registros o el objeto 
@@ -199,6 +200,7 @@ public class AlumnoDAO {
                 alumno.setCarnetAlumno(carnet_alumno);
                 alumno.setNombreAlumno(nombre_alumno);
                 alumno.setDireAlumno(direccion_alumno);
+                alumno.setTelefonoAlumno(telefono_alumno);
                 alumno.setEmailAlumno(email_alumno);
                 alumno.setEstatusAlumno(estatus_alumno);
                //añadimos a la lista todos los registros o el objeto 

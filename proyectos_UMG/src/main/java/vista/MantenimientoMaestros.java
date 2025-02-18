@@ -9,63 +9,62 @@ package vista;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
-import domain.Alumno;
-import datos.AlumnoDAO;
+import domain.Maestro;
+import datos.MaestroDAO;
 
 /**
  *
  * @author visitante
  */
-public class MantenimientoAlumnos extends javax.swing.JInternalFrame {
+public class MantenimientoMaestros extends javax.swing.JInternalFrame {
 
     public void llenadoDeCombos() {
-        AlumnoDAO alumnoDAO = new AlumnoDAO();
-        List<Alumno> alumnos = alumnoDAO.select();
+        MaestroDAO maestroDAO = new MaestroDAO();
+        List<Maestro> maestros = maestroDAO.select();
         cbox_empleado.addItem("Seleccione una opción");
-        for (int i = 0; i < alumnos.size(); i++) {
-            cbox_empleado.addItem(alumnos.get(i).getNombreAlumno());
+        for (int i = 0; i < maestros.size(); i++) {
+            cbox_empleado.addItem(maestros.get(i).getNombreMaestro());
         }
     }
 
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID_alumno");
+        modelo.addColumn("ID_Maestro");
         modelo.addColumn("nombre");
         modelo.addColumn("Dirección");
         modelo.addColumn("Tel.");
         modelo.addColumn("Email");
         modelo.addColumn("Estatus");
         
-        AlumnoDAO alumnoDAO = new AlumnoDAO();
-        List<Alumno> alumnos = alumnoDAO.select();
+        MaestroDAO maestroDAO = new MaestroDAO();
+        List<Maestro> maestros = maestroDAO.select();
         tablaAlumnos.setModel(modelo);
         String[] dato = new String[6];
-        for (int i = 0; i < alumnos.size(); i++) {
-            dato[0]=Integer.toString(alumnos.get(i).getCarnetAlumno());
-            dato[1] = alumnos.get(i).getNombreAlumno();
-            dato[2] = alumnos.get(i).getDireAlumno();
-            dato[3] = alumnos.get(i).getTelefonoAlumno();
-            dato[4] = alumnos.get(i).getEmailAlumno();
-            dato[5] = alumnos.get(i).getEstatusAlumno();
+        for (int i = 0; i < maestros.size(); i++) {
+            dato[0]=Integer.toString(maestros.get(i).getCodigoMaestro());
+            dato[1] = maestros.get(i).getNombreMaestro();
+            dato[2] = maestros.get(i).getDireMaestro();
+            dato[3] = maestros.get(i).getTelefonoMaestro();
+            dato[4] = maestros.get(i).getEmailMaestro();
+            dato[5] = maestros.get(i).getEstatusMaestro();
             //System.out.println("vendedor:" + vendedores);
             modelo.addRow(dato);
         }
     }
 
     public void buscarVendedor() {
-        Alumno alumnoaConsultar = new Alumno();
-        AlumnoDAO alumnoDAO = new AlumnoDAO();
-        alumnoaConsultar.setCarnetAlumno(Integer.parseInt(txtbuscado.getText()));
-        alumnoaConsultar = alumnoDAO.query(alumnoaConsultar);
-        txtNombre.setText(alumnoaConsultar.getNombreAlumno());
-        txtDireccion.setText(alumnoaConsultar.getDireAlumno());
-        txtTelefono.setText(alumnoaConsultar.getTelefonoAlumno());
-        txtEmail.setText(alumnoaConsultar.getEmailAlumno());
-       
-        txtEstatus.setText(alumnoaConsultar.getEstatusAlumno());
+        Maestro maestroAConsultar = new Maestro();
+        MaestroDAO maestroDAO = new MaestroDAO();
+        maestroAConsultar.setCodigoMaestro(Integer.parseInt(txtbuscado.getText()));
+        maestroAConsultar = maestroDAO.query(maestroAConsultar);
+        txtNombre.setText(maestroAConsultar.getNombreMaestro());
+        txtDireccion.setText(maestroAConsultar.getDireMaestro());
+        txtTelefono.setText(maestroAConsultar.getTelefonoMaestro());
+        txtEmail.setText(maestroAConsultar.getEmailMaestro());  
+        txtEstatus.setText(maestroAConsultar.getEstatusMaestro());
     }
 
-    public MantenimientoAlumnos() {
+    public MantenimientoMaestros() {
         initComponents();
         llenadoDeTablas();
         llenadoDeCombos();
@@ -335,22 +334,22 @@ public class MantenimientoAlumnos extends javax.swing.JInternalFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        AlumnoDAO alumnoDAO = new AlumnoDAO();
-        Alumno alumnoAEliminar = new Alumno();
-        alumnoAEliminar.setCarnetAlumno(Integer.parseInt(txtbuscado.getText()));
-        alumnoDAO.delete(alumnoAEliminar);
+        MaestroDAO maestroDAO = new MaestroDAO();
+        Maestro maestroAEliminar = new Maestro();
+        maestroAEliminar.setCodigoMaestro(Integer.parseInt(txtbuscado.getText()));
+        maestroDAO.delete(maestroAEliminar);
         llenadoDeTablas();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        AlumnoDAO alumnoDAO = new AlumnoDAO();
-        Alumno alumnoAInsertar = new Alumno();
-        alumnoAInsertar.setNombreAlumno(txtNombre.getText());
-        alumnoAInsertar.setDireAlumno(txtDireccion.getText());
-        alumnoAInsertar.setTelefonoAlumno(txtTelefono.getText());
-        alumnoAInsertar.setEmailAlumno(txtEmail.getText());
-        alumnoAInsertar.setEstatusAlumno(txtEstatus.getText());
-        alumnoDAO.insert(alumnoAInsertar);
+        MaestroDAO maestroDAO = new MaestroDAO();
+        Maestro maestroAInsertar = new Maestro();
+        maestroAInsertar.setNombreMaestro(txtNombre.getText());
+        maestroAInsertar.setDireMaestro(txtDireccion.getText());
+        maestroAInsertar.setTelefonoMaestro(txtTelefono.getText());
+        maestroAInsertar.setEmailMaestro(txtEmail.getText());
+        maestroAInsertar.setEstatusMaestro(txtEstatus.getText());
+        maestroDAO.insert(maestroAInsertar);
         llenadoDeTablas();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -361,15 +360,15 @@ public class MantenimientoAlumnos extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
-        AlumnoDAO alumnoDAO = new AlumnoDAO();
-        Alumno alumnoAActualizar = new Alumno();
-        alumnoAActualizar.setCarnetAlumno(Integer.parseInt(txtbuscado.getText()));
-        alumnoAActualizar.setNombreAlumno(txtNombre.getText());
-        alumnoAActualizar.setDireAlumno(txtDireccion.getText());
-        alumnoAActualizar.setTelefonoAlumno(txtTelefono.getText());
-        alumnoAActualizar.setEmailAlumno(txtEmail.getText());
-        alumnoAActualizar.setEstatusAlumno(txtEstatus.getText());
-        alumnoDAO.update(alumnoAActualizar);
+        MaestroDAO maestroDAO = new MaestroDAO();
+        Maestro maestroAActualizar = new Maestro();
+        maestroAActualizar.setCodigoMaestro(Integer.parseInt(txtbuscado.getText()));
+        maestroAActualizar.setNombreMaestro(txtNombre.getText());
+        maestroAActualizar.setDireMaestro(txtDireccion.getText());
+        maestroAActualizar.setTelefonoMaestro(txtTelefono.getText());
+        maestroAActualizar.setEmailMaestro(txtEmail.getText());
+        maestroAActualizar.setEstatusMaestro(txtEstatus.getText());
+        maestroDAO.update(maestroAActualizar);
         llenadoDeTablas();
     }//GEN-LAST:event_btnModificarActionPerformed
 

@@ -39,7 +39,8 @@ public class MdiGeneral extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        mantenimientousus = new javax.swing.JMenuItem();
+        mantenimientoAlumnos = new javax.swing.JMenuItem();
+        mantenimientoMaestros = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -67,13 +68,21 @@ public class MdiGeneral extends javax.swing.JFrame {
             }
         });
 
-        mantenimientousus.setText("Mantenimiento Alumnos");
-        mantenimientousus.addActionListener(new java.awt.event.ActionListener() {
+        mantenimientoAlumnos.setText("Mantenimiento Alumnos");
+        mantenimientoAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mantenimientoususActionPerformed(evt);
+                mantenimientoAlumnosActionPerformed(evt);
             }
         });
-        jMenu3.add(mantenimientousus);
+        jMenu3.add(mantenimientoAlumnos);
+
+        mantenimientoMaestros.setText("MantenimientoMaestros");
+        mantenimientoMaestros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mantenimientoMaestrosActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mantenimientoMaestros);
 
         jMenu1.add(jMenu3);
 
@@ -100,14 +109,23 @@ public class MdiGeneral extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenu3ActionPerformed
 
-    private void mantenimientoususActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoususActionPerformed
+    private void mantenimientoAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoAlumnosActionPerformed
         // TODO add your handling code here:
         MantenimientoAlumnos ventana = new MantenimientoAlumnos();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-    }//GEN-LAST:event_mantenimientoususActionPerformed
+    }//GEN-LAST:event_mantenimientoAlumnosActionPerformed
+
+    private void mantenimientoMaestrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoMaestrosActionPerformed
+        // TODO add your handling code here:
+          MantenimientoMaestros ventana = new MantenimientoMaestros();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }//GEN-LAST:event_mantenimientoMaestrosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,6 +169,7 @@ public class MdiGeneral extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem mantenimientousus;
+    private javax.swing.JMenuItem mantenimientoAlumnos;
+    private javax.swing.JMenuItem mantenimientoMaestros;
     // End of variables declaration//GEN-END:variables
 }

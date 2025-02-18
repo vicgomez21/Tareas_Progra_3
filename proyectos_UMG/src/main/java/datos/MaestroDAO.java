@@ -20,10 +20,10 @@ import java.util.List;
 public class MaestroDAO {
 // el ? ño utiliza java para poder trasladarle informacion a una base de datos desde java
    private static final String SQL_SELECT = "SELECT codigo_maestro, nombre_maestro, direccion_maestro, telefono_maestro, email_maestro, estatus_maestro FROM maestros";
-    private static final String SQL_INSERT = "INSERT INTO alumnos(nombre_maestro, direccion_maestro, telefono_maestro, email_maestro, estatus_maestro ) VALUES(?, ?,  ?, ?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO maestros(nombre_maestro, direccion_maestro, telefono_maestro, email_maestro, estatus_maestro ) VALUES(?, ?,  ?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE maestros SET nombre_maestro=?, direccion_maestro=?, telefono_maestro=?, email_maestro=?, estatus_maestro=? WHERE codigo_maestro = ?";
     private static final String SQL_DELETE = "DELETE FROM maestros WHERE codigo_maestro=?";
-    private static final String SQL_QUERY = "SELECT carnet_alumno, nombre_alumno, direccion_alumno, telefono_alumno, email_alumno, estatus_alumno  FROM alumnos WHERE carnet_alumno = ?";  
+    private static final String SQL_QUERY = "SELECT codigo_maestro, nombre_maestro, direccion_maestro, telefono_maestro, email_maestro, estatus_maestro  FROM maestros WHERE codigo_maestro = ?";  
  //-------------------------------------------------------------------------------
     //SELECT
     public List<Maestro> select() {
@@ -54,6 +54,7 @@ public class MaestroDAO {
                 maestro.setCodigoMaestro(codigo_maestro);
                 maestro.setNombreMaestro(nombre_maestro);
                 maestro.setDireMaestro(direccion_maestro);
+                maestro.setTelefonoMaestro(telefono_maestro);
                 maestro.setEmailMaestro(email_maestro);
                 maestro.setEstatusMaestro(estatus_mestro);
                //añadimos a la lista todos los registros o el objeto 
@@ -199,6 +200,7 @@ public class MaestroDAO {
                 maestro.setCodigoMaestro(codigo_maestro);
                 maestro.setNombreMaestro(nombre_maestro);
                 maestro.setDireMaestro(direccion_maestro);
+                maestro.setTelefonoMaestro(telefono_maestro);
                 maestro.setEmailMaestro(email_maestro);
                 maestro.setEstatusMaestro(estatus_mestro);
                //añadimos a la lista todos los registros o el objeto 

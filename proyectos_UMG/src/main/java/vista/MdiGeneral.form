@@ -27,12 +27,20 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu3ActionPerformed"/>
               </Events>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="mantenimientousus">
+                <MenuItem class="javax.swing.JMenuItem" name="mantenimientoAlumnos">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Mantenimiento Alumnos"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mantenimientoususActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mantenimientoAlumnosActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mantenimientoMaestros">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="MantenimientoMaestros"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mantenimientoMaestrosActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>
