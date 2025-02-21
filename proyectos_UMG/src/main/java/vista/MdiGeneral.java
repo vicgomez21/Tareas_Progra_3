@@ -41,6 +41,7 @@ public class MdiGeneral extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         mantenimientoAlumnos = new javax.swing.JMenuItem();
         mantenimientoMaestros = new javax.swing.JMenuItem();
+        mantenimientoFacultades = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -83,6 +84,14 @@ public class MdiGeneral extends javax.swing.JFrame {
             }
         });
         jMenu3.add(mantenimientoMaestros);
+
+        mantenimientoFacultades.setText("Mantenimiento Facultades");
+        mantenimientoFacultades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mantenimientoFacultadesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(mantenimientoFacultades);
 
         jMenu1.add(jMenu3);
 
@@ -127,6 +136,16 @@ public class MdiGeneral extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
     }//GEN-LAST:event_mantenimientoMaestrosActionPerformed
 
+    private void mantenimientoFacultadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoFacultadesActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+          MantenimientoFacultades ventana = new MantenimientoFacultades();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+    }//GEN-LAST:event_mantenimientoFacultadesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -170,6 +189,7 @@ public class MdiGeneral extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem mantenimientoAlumnos;
+    private javax.swing.JMenuItem mantenimientoFacultades;
     private javax.swing.JMenuItem mantenimientoMaestros;
     // End of variables declaration//GEN-END:variables
 }

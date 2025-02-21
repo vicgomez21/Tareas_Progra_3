@@ -20,7 +20,7 @@ import java.util.List;
 public class FacultadesDAO {
 // el ? ño utiliza java para poder trasladarle informacion a una base de datos desde java
    private static final String SQL_SELECT = "SELECT codigo_facultad, nombre_facultad,estatus_facultad FROM facultades";
-    private static final String SQL_INSERT = "INSERT INTO facultades( nombre_facultad,estatus_facultad ) VALUES(?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO facultades( nombre_facultad,estatus_facultad ) VALUES(?,?)";
     private static final String SQL_UPDATE = "UPDATE facultades SET nombre_facultad=?, estatus_facultad=?WHERE codigo_facultad = ?";
     private static final String SQL_DELETE = "DELETE FROM facultades WHERE codigo_facultad=?";
     private static final String SQL_QUERY = "SELECT codigo_facultad, nombre_facultad, estatus_facultad  FROM facultades WHERE codigo_facultad = ?";  
