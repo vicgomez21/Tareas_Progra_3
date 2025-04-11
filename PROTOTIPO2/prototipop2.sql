@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-04-2025 a las 02:53:30
+-- Tiempo de generación: 11-04-2025 a las 04:14:44
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -70,6 +70,48 @@ INSERT INTO `dvd` (`id_video`, `nombre_video`, `clasificacion_video`, `valor_vid
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `equipos`
+--
+
+CREATE TABLE `equipos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(11) NOT NULL,
+  `puntos` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `equipos`
+--
+
+INSERT INTO `equipos` (`id`, `nombre`, `puntos`) VALUES
+(1, 'a', 17),
+(2, 'aa', 7),
+(3, 'aaa', 0),
+(4, 'aaaa', 1),
+(5, 'aaaaa', 18),
+(6, 'aaaaaa', 57);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `equipos2`
+--
+
+CREATE TABLE `equipos2` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `partidos_jugados` int(11) DEFAULT 0,
+  `partidos_ganados` int(11) DEFAULT 0,
+  `partidos_empatados` int(11) DEFAULT 0,
+  `partidos_perdidos` int(11) DEFAULT 0,
+  `goles_a_favor` int(11) DEFAULT 0,
+  `goles_en_contra` int(11) DEFAULT 0,
+  `puntos` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_registrosatrasados`
 --
 
@@ -128,6 +170,18 @@ ALTER TABLE `dvd`
   ADD PRIMARY KEY (`id_video`);
 
 --
+-- Indices de la tabla `equipos`
+--
+ALTER TABLE `equipos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `equipos2`
+--
+ALTER TABLE `equipos2`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `tbl_registrosatrasados`
 --
 ALTER TABLE `tbl_registrosatrasados`
@@ -149,6 +203,18 @@ ALTER TABLE `cleintes`
 --
 ALTER TABLE `dvd`
   MODIFY `id_video` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `equipos`
+--
+ALTER TABLE `equipos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `equipos2`
+--
+ALTER TABLE `equipos2`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas

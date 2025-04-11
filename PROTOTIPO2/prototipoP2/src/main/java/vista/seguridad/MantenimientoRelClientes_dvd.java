@@ -82,8 +82,10 @@ lstAplicA.addListSelectionListener(new ListSelectionListener() {
                 for (DVD app : aplicaciones) {
                     if (app.getNombre_video().equals(nombreAppSeleccionada)) {
                         int idAppSeleccionada = app.getId_video();
+                        double precio=app.getValor_registro();
                         System.out.println("ID seleccionado: " + idAppSeleccionada); // Opcional: para debug
                         txtidApl.setText(String.valueOf(idAppSeleccionada)); // Asignar el ID a un campo
+                        total.setText(String.valueOf(precio));
                         break;
                     }
                 }
