@@ -16,6 +16,7 @@ import vista.seguridad.MantenimientoClientes;
 import vista.seguridad.MantenimientoBitacora;
 import vista.seguridad.MantenimientoDVD;
 import vista.seguridad.MantenimientoRelClientes_dvd;
+import vista.seguridad.VistaCampeonato;
 
 
 
@@ -57,6 +58,7 @@ public class MdiGeneral extends javax.swing.JFrame {
         MantenimientoUsuarios = new javax.swing.JMenuItem();
         MantenimientoAplicaciones = new javax.swing.JMenuItem();
         MantenimientoPerfiles = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         mnuAsignaciones = new javax.swing.JMenu();
         AsignacionesAplicacionesPerfil = new javax.swing.JMenuItem();
         Bitacora = new javax.swing.JMenu();
@@ -107,13 +109,21 @@ public class MdiGeneral extends javax.swing.JFrame {
         });
         MenuMantenimientos.add(MantenimientoAplicaciones);
 
-        MantenimientoPerfiles.setText("Mantenimiento Perfiles");
+        MantenimientoPerfiles.setText("Mantenimiento RelDVDCLIENTES");
         MantenimientoPerfiles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MantenimientoPerfilesActionPerformed(evt);
             }
         });
         MenuMantenimientos.add(MantenimientoPerfiles);
+
+        jMenuItem4.setText("VOTOS");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        MenuMantenimientos.add(jMenuItem4);
 
         MenuGeneralSeguridad.add(MenuMantenimientos);
 
@@ -290,6 +300,20 @@ for (javax.swing.JInternalFrame frame : jDesktopPane1.getAllFrames()) {
                     }
     }//GEN-LAST:event_salirSistemaActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+           // TODO add your handling code here:
+    // Abrir la ventana de VistaCampeonato
+    VistaCampeonato ventana = new VistaCampeonato();
+    jDesktopPane1.add(ventana);
+    ventana.setVisible(true);
+
+    // Centrar la ventana en el JDesktopPane
+    Dimension desktopSize = jDesktopPane1.getSize();
+    Dimension frameSize = ventana.getSize();
+    ventana.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -339,6 +363,7 @@ for (javax.swing.JInternalFrame frame : jDesktopPane1.getAllFrames()) {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenu mnuAsignaciones;
     private javax.swing.JMenuItem salirSistema;
     // End of variables declaration//GEN-END:variables

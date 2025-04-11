@@ -1,4 +1,5 @@
 Modelo\seguridad\BitacoraDAO.class
+vista\seguridad\VistaCampeonato.class
 vista\seguridad\MantenimientoClientes$8.class
 vista\seguridad\MantenimientoClientes$1.class
 vista\seguridad\MantenimientoRelClientes_dvd$6.class
@@ -30,6 +31,7 @@ vista\seguridad\MantenimientoDVD$4.class
 vista\seguridad\MantenimientoRelClientes_dvd.class
 vista\seguridad\MantenimientoRelClientes_dvd$8.class
 vista\seguridad\MantenimientoBitacora$1.class
+vista\MdiGeneral$11.class
 Controlador\seguridad\UsuarioConectado.class
 vista\MdiGeneral$8.class
 vista\seguridad\MantenimientoDVD$1.class
@@ -48,9 +50,11 @@ vista\MdiGeneral$4.class
 vista\seguridad\MantenimientoDVD$5.class
 Modelo\seguridad\DVD_DAO.class
 vista\seguridad\MantenimientoClientes$2.class
+Controlador\seguridad\Equipo.class
 Modelo\seguridad\RelDvdClienteDAO1.class
 vista\seguridad\MantenimientoBitacora$3.class
 vista\Login$1.class
+Modelo\seguridad\ControladorCampeonato.class
 Controlador\seguridad\RelDVD_cleinte.class
 vista\MdiGeneral$9.class
 vista\seguridad\MantenimientoDVD.class
